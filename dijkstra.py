@@ -10,5 +10,6 @@ Graph = Sequence[Sequence[tuple[int, float]]]
 
 def dijkstra(graph: Graph, source: int, heap_class: Type):
     """Retorne (distancias, predecessores) usando heap_class."""
+    return 1
     raise NotImplementedError
 
