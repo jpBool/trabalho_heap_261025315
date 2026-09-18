@@ -64,6 +64,7 @@ def gen_dijkstra_ladder(n :int, rnd : random.Random):
             
     return grafo
 
+# Função que executa a função passada com parâmetro 'repeticoes' vezes e retorna os dados da análise
 def medir(func, repeticoes: int = 7) -> tuple[float, float]:
     """Retorne mediana e desvio absoluto mediano, em segundos."""
     tempos = []
@@ -75,10 +76,11 @@ def medir(func, repeticoes: int = 7) -> tuple[float, float]:
     mad = statistics.median(abs(t - mediana) for t in tempos)
     return mediana, mad
 
+# Funnção que automatiza os testes das Heaps no Djikstra
 def benchmark(rng : random.Random, sizes : list = [100, 500, 1000, 5000]) -> list[list]:
 
     # heap_types = [heaps.BinaryHeap(), heaps.BinaryHeap(), heaps.FibonacciHeap()]
-    heap_types = [heaps.BinaryHeap, heaps.BinaryHeap] 
+    heap_types = [heaps.BinaryHeap, heaps.FibonacciHeap] 
     graph = [gen_sparse_random, gen_dense_random, gen_dijkstra_ladder] 
     data = [
         {
@@ -110,8 +112,8 @@ import pandas as pd
 
 # Suponha que 'resultados' seja a variável que recebeu o retorno da sua função benchmark()
 # resultados = benchmark(rng, sizes=[100, 500, 1000, 5000])
-
 def visualizar_benchmark(data):
+    
     # 1. Achatar os dados para um formato tabular (ideal para o Pandas)
     linhas = []
     for heap in data:
@@ -163,7 +165,7 @@ def visualizar_benchmark(data):
             
         ax.set_title(f"Grafo: {nome_grafo}")
         ax.set_xlabel("Número de Vértices (Size)")
-        ax.set_ylabel("Tempo de Execução (Nanosegundos)")
+        ax.set_ylabel("Tempo de Execução (Segundos)")
         ax.grid(True, linestyle='--', alpha=0.6)
         ax.legend()
 
@@ -176,12 +178,8 @@ def main() -> None:
     random.seed(SEED)
     rnd = random.Random()
 
-    data = benchmark(rnd, [10])
+    data = benchmark(rnd,[10, 11, 12, 13])
     visualizar_benchmark(data)
-
-    return 1
-    raise NotImplementedError("Implemente o protocolo descrito no enunciado")
-
 
 if __name__ == "__main__":
     main()
