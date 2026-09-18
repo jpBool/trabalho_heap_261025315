@@ -178,7 +178,7 @@ def main() -> None:
     random.seed(SEED)
     rnd = random.Random()
 
-    data = benchmark(rnd,[10, 11, 12, 13])
+    data = benchmark(rnd,[5000])
     visualizar_benchmark(data)
 
 if __name__ == "__main__":
