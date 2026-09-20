@@ -80,7 +80,7 @@ def medir(func, repeticoes: int = 7) -> tuple[float, float]:
 def benchmark(rng : random.Random, sizes : list = [100, 500, 1000, 5000]) -> list[list]:
 
     # heap_types = [heaps.BinaryHeap(), heaps.BinaryHeap(), heaps.FibonacciHeap()]
-    heap_types = [heaps.BinaryHeap, heaps.FibonacciHeap] 
+    heap_types = [heaps.BinaryHeap, heaps.BinomialHeap, heaps.FibonacciHeap]
     graph = [gen_sparse_random, gen_dense_random, gen_dijkstra_ladder] 
     data = [
         {
