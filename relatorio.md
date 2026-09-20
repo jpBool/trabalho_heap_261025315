@@ -41,6 +41,9 @@ Os tamanhos utilizados foram:
 <!-- Descreva pelo menos três famílias e quatro tamanhos por família. -->
 
 ## Resultados
+
+![Comparação de Heaps](Heaps_Comparation.png)
+
 <!-- Inclua unidades e dispersão. -->
 
 ## Discussão

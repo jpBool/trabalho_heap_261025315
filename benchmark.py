@@ -5,6 +5,8 @@ import statistics
 import time
 import dijkstra
 import heaps
+import matplotlib.pyplot as plt
+import pandas as pd
 
 SEED = 2027
 
@@ -109,15 +111,9 @@ def benchmark(rng : random.Random, sizes : list = [100, 500, 1000, 5000]) -> lis
     return data
 
 
-
-import matplotlib.pyplot as plt
-import pandas as pd
-
-# Suponha que 'resultados' seja a variável que recebeu o retorno da sua função benchmark()
-# resultados = benchmark(rng, sizes=[100, 500, 1000, 5000])
 def visualizar_benchmark(data):
     
-    # 1. Achatar os dados para um formato tabular (ideal para o Pandas)
+    # Achatar os dados para um formato tabular (ideal para o Pandas)
     linhas = []
     for heap in data:
         for i in range(len(heap["size"])):
@@ -131,7 +127,7 @@ def visualizar_benchmark(data):
             
     df = pd.DataFrame(linhas)
     
-    # 2. Descobrir quais são as famílias de grafos únicas para criar os subplots
+    # Descobrir quais são as famílias de grafos únicas para criar os subplots
     familias_grafos = df["Graph"].unique()
     
     # Cria uma figura com N gráficos lado a lado (1 linha, N colunas)
@@ -141,7 +137,7 @@ def visualizar_benchmark(data):
     if len(familias_grafos) == 1:
         axes = [axes]
         
-    # 3. Plotar os dados
+    # Plotar os dados
     for i, nome_grafo in enumerate(familias_grafos):
         ax = axes[i]
         
@@ -176,12 +172,11 @@ def visualizar_benchmark(data):
     plt.show()
 
 # Chamando a função:
-# visualizar_benchmark(resultados)
 def main() -> None:
     random.seed(SEED)
     rnd = random.Random()
 
-    data = benchmark(rnd,[5000])
+    data = benchmark(rnd)
     visualizar_benchmark(data)
 
 if __name__ == "__main__":
