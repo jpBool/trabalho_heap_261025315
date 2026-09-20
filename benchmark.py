@@ -1,5 +1,3 @@
-"""Experimento reproduzível; complete e gere os dados do relatório."""
-
 from __future__ import annotations
 
 import random
@@ -48,7 +46,7 @@ def gen_dense_random(n: int, rng : random.Random) -> list[list]:
     return graph
 
 # Gera grafo com o prior caso do dijkstra
-def gen_dijkstra_ladder(n :int, rnd : random.Random):
+def gen_dijkstra_ladder(n: int, rnd : random.Random):
 
     base_weight = n * 2
 
@@ -65,8 +63,13 @@ def gen_dijkstra_ladder(n :int, rnd : random.Random):
     return grafo
 
 # Função que executa a função passada com parâmetro 'repeticoes' vezes e retorna os dados da análise
-def medir(func, repeticoes: int = 7) -> tuple[float, float]:
-    """Retorne mediana e desvio absoluto mediano, em segundos."""
+def medir(func, repeticoes: int = 7, aquecimento: int = 2) -> tuple[float, float]:
+
+    # Realiza algumas rodadas de aquecimento
+    for _ in range(aquecimento):
+        func() 
+
+    #Retorne mediana e desvio absoluto mediano, em segundos.
     tempos = []
     for _ in range(repeticoes):
         inicio = time.perf_counter()
@@ -178,7 +181,7 @@ def main() -> None:
     random.seed(SEED)
     rnd = random.Random()
 
-    data = benchmark(rnd,[10, 11, 12, 13])
+    data = benchmark(rnd,[5000])
     visualizar_benchmark(data)
 
 if __name__ == "__main__":
