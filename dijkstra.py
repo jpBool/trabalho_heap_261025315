@@ -45,6 +45,9 @@ def dijkstra(graph: Graph, source: int, heap_class: Type):
 
         # Percorre os vizinhos do nó corrente
         for neighbor, weight in graph[current_node]:
+            # Verifica se ja foi visitado
+            if neighbor in visited:
+                continue
             # Calcula a distância para com o nó o vizinho
             tentative_distance = current_distance + weight
             # Verifica se a distância já atribuída a neighbor é menor
