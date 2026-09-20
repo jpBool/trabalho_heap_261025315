@@ -44,6 +44,7 @@ Os tamanhos utilizados foram:
 
 ![Comparação de Heaps](Heaps_Comparation.png)
 
+![Métricas do Gafico](Data_Metrics.png)
 <!-- Inclua unidades e dispersão. -->
 
 ## Discussão

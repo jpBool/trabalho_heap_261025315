@@ -126,6 +126,8 @@ def visualizar_benchmark(data):
             })
             
     df = pd.DataFrame(linhas)
+
+    print(df)
     
     # Descobrir quais são as famílias de grafos únicas para criar os subplots
     familias_grafos = df["Graph"].unique()
