@@ -13,6 +13,10 @@ def dijkstra(graph: Graph, source: int, heap_class: Type):
     """Retorne (distancias, predecessores) usando heap_class."""
 
     n = len(graph)
+    for node_edges in graph:
+        for _, weight in node_edges:
+            if weight < 0:
+                raise ValueError("Pesos negativos não são permitidos")
 
     # Inicializa os valores de todos os nós com infinito
     distances = {node: float("inf") for node in range(n)}
@@ -45,6 +49,9 @@ def dijkstra(graph: Graph, source: int, heap_class: Type):
 
         # Percorre os vizinhos do nó corrente
         for neighbor, weight in graph[current_node]:
+            # Não pode haver pesos negativos
+            if weight < 0:
+                raise ValueError("Pesos negativos não são permitidos")
             # Verifica se ja foi visitado
             if neighbor in visited:
                 continue
